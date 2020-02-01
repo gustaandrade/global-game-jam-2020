@@ -16,7 +16,7 @@ public class Grave : MonoBehaviour
     public Sprite[] graveSprites;
     private Event currentGraveEvent;
 
-
+    public GameObject eventSpawnPoint;    
    
     // Start is called before the first frame update
     void Start()
@@ -43,11 +43,11 @@ public class Grave : MonoBehaviour
         }
     }
 
-    public void StartGraveEvent(Event _currentEvent)
+    public void SetGraveEvent(Event _currentEvent)
     {
         currentGraveEvent = _currentEvent;
         graveState = GraveState.Event;
-        print(currentGraveEvent.eventType);
+        currentGraveEvent.SetEventGrave(this);
     }
 
     public void StopGraveEvent()
@@ -64,6 +64,11 @@ public class Grave : MonoBehaviour
     public GraveState GetGraveState()
     {
         return graveState;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        print("tomou " + damage);
     }
 
 
