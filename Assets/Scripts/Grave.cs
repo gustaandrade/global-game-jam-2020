@@ -16,6 +16,8 @@ public class Grave : MonoBehaviour
     public Sprite[] graveSprites;
     private Event currentGraveEvent;
 
+
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class Grave : MonoBehaviour
     {
         currentGraveEvent = _currentEvent;
         graveState = GraveState.Event;
+        print(currentGraveEvent.eventType);
     }
 
     public void StopGraveEvent()
@@ -56,6 +59,11 @@ public class Grave : MonoBehaviour
     private void UpdateGraveSprite()
     {
        // this.GetComponent<SpriteRenderer>().sprite = graveSprites[life];
+    }
+
+    public GraveState GetGraveState()
+    {
+        return graveState;
     }
 
 
