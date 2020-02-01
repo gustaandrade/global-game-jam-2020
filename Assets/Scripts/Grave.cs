@@ -11,9 +11,10 @@ public enum GraveState
 
 public class Grave : MonoBehaviour
 {
-    private int life = 3;
+   
     private GraveState graveState;
-    public Sprite[] graveSprites;  
+    public Sprite[] graveSprites;
+    private Event currentGraveEvent;
 
     // Start is called before the first frame update
     void Start()
@@ -40,19 +41,21 @@ public class Grave : MonoBehaviour
         }
     }
 
-    public void StartGraveEvent()
+    public void StartGraveEvent(Event _currentEvent)
     {
+        currentGraveEvent = _currentEvent;
         graveState = GraveState.Event;
     }
 
     public void StopGraveEvent()
     {
+        currentGraveEvent = null;
         graveState = GraveState.Idle;
     }
 
     private void UpdateGraveSprite()
     {
-        this.GetComponent<SpriteRenderer>().sprite = graveSprites[life];
+       // this.GetComponent<SpriteRenderer>().sprite = graveSprites[life];
     }
 
 

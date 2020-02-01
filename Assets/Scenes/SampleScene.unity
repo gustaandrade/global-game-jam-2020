@@ -121,6 +121,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87374147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87374149}
+  - component: {fileID: 87374148}
+  m_Layer: 0
+  m_Name: EventManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87374148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87374147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 951128a401b52d845b32bafe98ac23c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventsList:
+  - eventType: 0
+    damage: 1
+  - eventType: 1
+    damage: 2
+  - eventType: 2
+    damage: 1
+  - eventType: 3
+    damage: 1
+  - eventType: 4
+    damage: 1
+  - eventType: 5
+    damage: 1
+  gravesList:
+  - {fileID: 873379928}
+  - {fileID: 1432838488}
+  - {fileID: 2102737908}
+  - {fileID: 1931148666}
+  - {fileID: 1773585369}
+  - {fileID: 373704313}
+--- !u!4 &87374149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87374147}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &286719085
 GameObject:
   m_ObjectHideFlags: 0
@@ -315,6 +378,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &373704314
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -662,6 +730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &873379929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1804,6 +1877,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &1432838489
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2099,6 +2177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &1773585370
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2220,6 +2303,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &1931148667
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2415,6 +2503,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1183b07235f891448e87ebffa82c5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  graveSprites:
+  - {fileID: 21300000, guid: 30f8768bec672924ba32705c00dc3277, type: 3}
+  - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!61 &2102737909
 BoxCollider2D:
   m_ObjectHideFlags: 0
