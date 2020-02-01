@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ToolType
+{
+    Shovel,
+    Hand,
+    Bucket,
+    Trowel,
+    FireExt,
+    Brush
+}
 public class Tool : MonoBehaviour
 {
-    [SerializeField]private string toolName;
+    [SerializeField]private ToolType toolType;
     public Sprite toolSprite;
 
-    public string GetToolName()
+    public ToolType GetToolType()
     {
-        return toolName;
+        return toolType;
     }
 
     // Start is called before the first frame update

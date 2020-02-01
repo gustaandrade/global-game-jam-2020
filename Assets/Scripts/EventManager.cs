@@ -4,12 +4,12 @@ using UnityEngine;
 
 public enum EventType
 {
-    Cat,
-    Light,
-    Skater,
-    Dust,
-    Pidgeon,
-    Vandal
+    Dog,
+    Crow,
+    Skeleton,
+    Graffiti, 
+    Lightning,
+    Cat
 }
 
 [System.Serializable]
@@ -19,6 +19,8 @@ public class Event
 
     [Range(1, 3)]
     public int damage;
+
+    public ToolType toolToFix;
 
     private Grave eventGrave;
 
@@ -43,12 +45,17 @@ public class EventManager : MonoBehaviour
 
     //event objects
     public GameObject cat;
-
+    public GameObject crow;
+    public GameObject skeleton;
+    public GameObject graffiti;
+    public GameObject lightning;
+    public GameObject dog;
+     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -62,7 +69,7 @@ public class EventManager : MonoBehaviour
 
     public Event GetRandomEvent()
     {
-        return eventsList[0];
+        return eventsList[1];
      //   return eventsList[Random.Range(0, eventsList.Count)];
     }
 
@@ -111,62 +118,62 @@ public class EventManager : MonoBehaviour
         switch (e.eventType)
         {
             case EventType.Cat:
-                GameObject catObj =  Instantiate(cat, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                GameObject catObj = Instantiate(cat, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 CatEvent(e, g, catObj);
                 break;
-            case EventType.Dust:
-                StartCoroutine(DustEvent());
+            case EventType.Crow:
+               GameObject crowObj = Instantiate(crow, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                CrowEvent(e, g, crowObj); 
                 break;
-            case EventType.Light:
-                StartCoroutine(LightEvent());
+            case EventType.Lightning:
+                LightningEvent();
                 break;
-            case EventType.Pidgeon:
-                StartCoroutine(PidgeonEvent());
+            case EventType.Graffiti:
+                GraffitiEvent();
                 break;
-            case EventType.Skater:
-                StartCoroutine(SkaterEvent());
+            case EventType.Skeleton:
+                SkeletonEvent();
                 break;
-            case EventType.Vandal:
-                StartCoroutine(VandalEvent());
+            case EventType.Dog:
+                DogEvent();
                 break;
 
         }
     }
 
 
-    public void CatEvent(Event e, Grave g, GameObject catObj)
+    private void CatEvent(Event e, Grave g, GameObject catObj)
     {
         catObj.GetComponent<Cat>().SetEvent(e);
         catObj.GetComponent<Cat>().MoveTowards(g.gameObject);
-        
-        print("cat");
     }
 
-    public IEnumerator DustEvent()
+    private void CrowEvent(Event e, Grave g, GameObject crowObj)
     {
-        yield return new WaitForSeconds(0.2f);
-        print("DustEvent");
+        crowObj.GetComponent<Crow>().SetEvent(e);
+        crowObj.GetComponent<Crow>().MoveTowards(g.gameObject);
+        
     }
 
-    public IEnumerator LightEvent()
+    public IEnumerator LightningEvent()
     {
         yield return new WaitForSeconds(0.2f);
         print("LightEvent");
     }
 
-    public IEnumerator PidgeonEvent()
+    public IEnumerator GraffitiEvent()
     {
         yield return new WaitForSeconds(0.2f);
         print("PidgeonEvent");
     }
 
-    public IEnumerator SkaterEvent()
+    public IEnumerator SkeletonEvent()
     {
         yield return new WaitForSeconds(0.2f);
         print("SkaterEvent");
     }
 
-    public IEnumerator VandalEvent()
+    public IEnumerator DogEvent()
     {
         yield return new WaitForSeconds(0.2f);
         print("VandalEvent");

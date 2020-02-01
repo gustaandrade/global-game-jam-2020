@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ToolsManager : MonoBehaviour
 {
-    private Tool selectedTool;
+    public Tool selectedTool;
     public SpriteRenderer cursorTool;
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
+    public static ToolsManager instance;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -28,5 +29,12 @@ public class ToolsManager : MonoBehaviour
         selectedTool = childTool;
         cursorTool.sprite = selectedTool.toolSprite;
     }
- 
+
+    public void ClearSelectedTool()
+    {
+        selectedTool = null;
+        cursorTool.sprite = null;
+    }
+
+
 }

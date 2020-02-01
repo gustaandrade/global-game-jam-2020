@@ -31,7 +31,7 @@ public class TimerManager : MonoBehaviour
 
         if (CallEventTimer >= CallEventLimitTimer)
         {
-            EventManager.instance.StartEventInRndGrave();
+            EventManager.Instance().StartEventInRndGrave();
             CallEventTimer = 0f;
         }
     }
