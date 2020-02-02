@@ -77,11 +77,14 @@ public class TimerManager : MonoBehaviour
             _rolling = false;
             Transition.SetActive(true);
 
+            AudioManager.Instance.TransitionToDay();
+
             _isNightTime = !_isNightTime;
             DayToNightSlider.SetActive(!_isNightTime);
             NightToDaySlider.SetActive(_isNightTime);
             DayGlobalTimerSlider.Value = 0f;
             NightGlobalTimerSlider.Value = 0f;
+
             EventManager.Instance().canDamage = false;
             EventManager.Instance().DestroyAllEnemies();
             StartCoroutine(FreeRolling());
@@ -99,6 +102,8 @@ public class TimerManager : MonoBehaviour
         NightGlobalTimerSlider.Value = 0f;
         EventManager.Instance().ResetAllGraves();
         _waveCount++;
+
+        AudioManager.Instance.StartNight();
 
         Transition.SetActive(false);
         _rolling = true;
