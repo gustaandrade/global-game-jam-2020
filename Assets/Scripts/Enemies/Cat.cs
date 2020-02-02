@@ -97,5 +97,6 @@ public class Cat : MonoBehaviour
     { 
         moving = false;
         returning = true;
+        this.transform.localScale = new Vector3(1, this.transform.localScale.y * -1, 1);
     }
 }

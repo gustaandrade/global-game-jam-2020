@@ -94,5 +94,6 @@ public class Crow : MonoBehaviour
         moving = false;
         returning = true;
         target.GetComponent<Grave>().StopGraveEvent();
+        this.transform.localScale = new Vector3(1, this.transform.localScale.y * -1, 1);
     }
 }
