@@ -12,7 +12,7 @@ public class SceneManager : MonoBehaviour
     public Animator Fade;
 
     [Space(10), Header("Values")] 
-    public float MovingMenuEndPosX = 1280f;
+    public float MovingMenuEndPosX = 1366f;
     public float MovingMenuEndPosYUp = -800f;
     public float MovingMenuEndPosYDown = 800f;
     public float MovingMenuDurationX = 4f;
