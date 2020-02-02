@@ -21,6 +21,8 @@ public class TimerManager : MonoBehaviour
     public GameObject NightToDaySlider;
     public GameObject DayToNightSlider;
 
+    public TextMeshProUGUI TransitionText;
+
     [Space(10), Header("Values")]
     [SerializeField, ReadOnly] private float _globalTimer;
     public float GlobalTimerLimit;
@@ -75,6 +77,9 @@ public class TimerManager : MonoBehaviour
         {
             _globalTimer = 0f;
             _rolling = false;
+            TransitionText.text = EventManager.Instance().DestroyedGravesCount() == 0
+                ? "Good job! Keep up the good work. The visitors are glad everything's intact."
+                : $"You were unable to repair {EventManager.Instance().DestroyedGravesCount()} tombs this night! The visitors are complaining about it to the manager!";
             Transition.SetActive(true);
 
             AudioManager.Instance.TransitionToDay();
