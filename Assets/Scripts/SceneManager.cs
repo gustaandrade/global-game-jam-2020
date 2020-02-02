@@ -9,6 +9,7 @@ public class SceneManager : MonoBehaviour
 
     [Space(10), Header("Objects")]
     public RectTransform MovingObjects;
+    public Animator Fade;
 
     [Space(10), Header("Values")] 
     public float MovingMenuEndPosX = 1280f;
@@ -16,6 +17,7 @@ public class SceneManager : MonoBehaviour
     public float MovingMenuEndPosYDown = 800f;
     public float MovingMenuDurationX = 4f;
     public float MovingMenuDurationY = 2f;
+    public float WaitToPlayTime = 6f;
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class SceneManager : MonoBehaviour
     public void OnPlay()
     {
         MovingObjects.DOLocalMoveX(MovingMenuEndPosX, MovingMenuDurationX).SetEase(Ease.Linear);
+        StartCoroutine(Wait(WaitToPlayTime));
     }
 
     public void OnAbout()
@@ -51,5 +54,12 @@ public class SceneManager : MonoBehaviour
     public void OnClose()
     {
         Application.Quit();
+    }
+
+    private IEnumerator Wait(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Fade.SetTrigger("DoFadeIn");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }
