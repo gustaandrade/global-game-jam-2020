@@ -61,16 +61,16 @@ public class EventManager : MonoBehaviour
     public GameObject lightning;
     public GameObject dog;
 
+    private AudioSource _source;
 
     public bool canDamage = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        _source = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -147,36 +147,41 @@ public class EventManager : MonoBehaviour
                 enemies.Add(catObj);
                 FlipEnemy(catObj);
                 CatEvent(e, g, catObj);
+                _source.PlayOneShot(e.eventAudio);
                 break;
             case EventType.Crow:
                GameObject crowObj = Instantiate(crow, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(crowObj);
                 FlipEnemy(crowObj);
-                CrowEvent(e, g, crowObj); 
+                CrowEvent(e, g, crowObj);
+               _source.PlayOneShot(e.eventAudio);
                 break;
             case EventType.Lightning:
                 GameObject lightningObj = Instantiate(lightning, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(lightningObj);
-
                 LightningEvent(e, g, lightningObj);
+                _source.PlayOneShot(e.eventAudio);
                 break;
             case EventType.Graffiti:
                 GameObject graffitiObj = Instantiate(graffiti, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(graffitiObj);
                 FlipEnemy(graffitiObj);
                 GraffitiEvent(e, g, graffitiObj);
+                _source.PlayOneShot(e.eventAudio);
                 break;
             case EventType.Skeleton:
                 GameObject skeletonObj = Instantiate(skeleton, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(skeletonObj);
                 FlipEnemy(skeletonObj);
                 SkeletonEvent(e, g, skeletonObj);
+                _source.PlayOneShot(e.eventAudio);
                 break;
             case EventType.Dog:
                 GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 FlipEnemy(dogObj);
                 enemies.Add(dogObj);
                 DogEvent(e, g, dogObj);
+                _source.PlayOneShot(e.eventAudio);
                 break;
         }
     }
