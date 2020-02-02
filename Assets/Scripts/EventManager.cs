@@ -121,7 +121,7 @@ public class EventManager : MonoBehaviour
         else
         {
             Grave pickedGrave = gravesList[Random.Range(0, gravesList.Count)];
-            if (pickedGrave.GetGraveState() == GraveState.Idle && pickedGrave.GetGraveStatus() < 4)
+            if (pickedGrave.GetGraveState() == GraveState.Idle && pickedGrave.GetGraveStatus() < 3)
             {
                 loopCounter = 0;
                 Event rndEvent = GetRandomEvent();

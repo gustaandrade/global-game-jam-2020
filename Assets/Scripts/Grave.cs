@@ -75,7 +75,7 @@ public class Grave : MonoBehaviour
 
     private void UpdateGraveSprite()
     {
-        this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus - 1];
+        this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus];
     }
 
     private void ResetGraveSprite()
@@ -93,9 +93,9 @@ public class Grave : MonoBehaviour
         if (EventManager.Instance().canDamage)
         {
             graveStatus += damage;
-            if (graveStatus >= 4)
+            if (graveStatus >= 3)
             {
-                graveStatus = 4;
+                graveStatus = 3;
                 LifeManager.instance.lifes--;
                 if (EventManager.Instance().DestroyedGravesCount() == 6)
                 {
@@ -132,9 +132,8 @@ public class Grave : MonoBehaviour
                 //ToolsManager.instance.ClearSelectedTool();
                 graveTimer.SetActive(false);
                 startClock = false;
-                graveState = GraveState.Idle;
                 ToolsManager.instance.usingTool = false;
-
+                ResetGrave();
                 print("grave reparada para o status" + graveStatus);
             }
             else
