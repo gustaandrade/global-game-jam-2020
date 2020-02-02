@@ -83,6 +83,7 @@ public class TimerManager : MonoBehaviour
             DayGlobalTimerSlider.Value = 0f;
             NightGlobalTimerSlider.Value = 0f;
             EventManager.Instance().canDamage = false;
+            EventManager.Instance().DestroyAllEnemies();
             StartCoroutine(FreeRolling());
         }
     }

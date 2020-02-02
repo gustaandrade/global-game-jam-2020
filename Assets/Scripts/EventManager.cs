@@ -35,6 +35,8 @@ public class EventManager : MonoBehaviour
     public List<Event> eventsList;
     public List<Grave> gravesList;
 
+    public List<GameObject> enemies = new List<GameObject>();
+
     private static EventManager instance;
 
     public static EventManager Instance()
@@ -114,39 +116,51 @@ public class EventManager : MonoBehaviour
         }
     }
 
-
     public void StartEvent(Event e, Grave g)
     {
         switch (e.eventType)
         {
             case EventType.Cat:
                 GameObject catObj = Instantiate(cat, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(catObj);
                 CatEvent(e, g, catObj);
                 break;
             case EventType.Crow:
                GameObject crowObj = Instantiate(crow, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(crowObj);
                 CrowEvent(e, g, crowObj); 
                 break;
             case EventType.Lightning:
                 GameObject lightningObj = Instantiate(lightning, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(lightningObj);
                 LightningEvent(e, g, lightningObj);
                 break;
             case EventType.Graffiti:
                 GameObject graffitiObj = Instantiate(graffiti, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(graffitiObj);
                 GraffitiEvent(e, g, graffitiObj);
                 break;
             case EventType.Skeleton:
                 GameObject skeletonObj = Instantiate(skeleton, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(skeletonObj);
                 SkeletonEvent(e, g, skeletonObj);
                 break;
             case EventType.Dog:
                 GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                enemies.Add(dogObj);
                 DogEvent(e, g, dogObj);
                 break;
-
         }
     }
 
+    public void DestroyAllEnemies()
+    {
+        foreach(GameObject e in enemies)
+        {
+            Destroy(e);
+        }
+        enemies.Clear();
+    }
 
     private void CatEvent(Event e, Grave g, GameObject catObj)
     {
