@@ -128,7 +128,7 @@ public class Grave : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
 
                 //repair
-                graveStatus--;
+                graveStatus= 0;
                 //ToolsManager.instance.ClearSelectedTool();
                 graveTimer.SetActive(false);
                 startClock = false;

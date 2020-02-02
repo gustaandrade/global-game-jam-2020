@@ -359,7 +359,7 @@ MonoBehaviour:
   _globalTimer: 0
   GlobalTimerLimit: 30
   _callEventTimer: 0
-  CallEventLimitTimer: 10
+  CallEventLimitTimer: 3
   _dayEventTimer: 0
   DayEventLimitTimer: 10
 --- !u!4 &239131297
