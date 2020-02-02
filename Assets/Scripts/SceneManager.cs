@@ -60,6 +60,7 @@ public class SceneManager : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         Fade.SetTrigger("DoFadeIn");
+        yield return new WaitForSeconds(1.5f);
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 }
