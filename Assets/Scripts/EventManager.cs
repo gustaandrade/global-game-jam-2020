@@ -85,13 +85,11 @@ public class EventManager : MonoBehaviour
         // return eventsList[1];
         if (wave <= 3)
         {
-            return eventsList[Random.Range(0, eventsList.Count)];
-            //return eventsList[Random.Range(0, 2)];
+            return eventsList[Random.Range(0, 2)];
         }
         if (wave > 3 && wave <= 5)
         {
-            return eventsList[Random.Range(0, eventsList.Count)];
-            //return eventsList[Random.Range(0, 4)];
+          return eventsList[Random.Range(0, 4)];
         }
         else
         {
