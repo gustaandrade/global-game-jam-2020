@@ -147,43 +147,49 @@ public class EventManager : MonoBehaviour
                 enemies.Add(catObj);
                 FlipEnemy(catObj);
                 CatEvent(e, g, catObj);
-                _source.PlayOneShot(e.eventAudio);
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
                 break;
             case EventType.Crow:
                GameObject crowObj = Instantiate(crow, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(crowObj);
                 FlipEnemy(crowObj);
                 CrowEvent(e, g, crowObj);
-               _source.PlayOneShot(e.eventAudio);
-                break;
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
+               break;
             case EventType.Lightning:
                 GameObject lightningObj = Instantiate(lightning, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(lightningObj);
                 LightningEvent(e, g, lightningObj);
-                _source.PlayOneShot(e.eventAudio);
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
                 break;
             case EventType.Graffiti:
                 GameObject graffitiObj = Instantiate(graffiti, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(graffitiObj);
                 FlipEnemy(graffitiObj);
                 GraffitiEvent(e, g, graffitiObj);
-                _source.PlayOneShot(e.eventAudio);
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
                 break;
             case EventType.Skeleton:
                 GameObject skeletonObj = Instantiate(skeleton, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(skeletonObj);
                 FlipEnemy(skeletonObj);
                 SkeletonEvent(e, g, skeletonObj);
-                _source.PlayOneShot(e.eventAudio);
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
                 break;
             case EventType.Dog:
                 GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 FlipEnemy(dogObj);
                 enemies.Add(dogObj);
                 DogEvent(e, g, dogObj);
-                _source.PlayOneShot(e.eventAudio);
+                StartCoroutine(PlayDelayedOneShot(e.eventAudio));
                 break;
         }
+    }
+
+    private IEnumerator PlayDelayedOneShot(AudioClip aud)
+    {
+        yield return new WaitForSeconds(2f);
+        _source.PlayOneShot(aud);
     }
 
     private void FlipEnemy(GameObject e)
