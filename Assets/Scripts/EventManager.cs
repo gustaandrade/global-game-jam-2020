@@ -186,7 +186,7 @@ public class EventManager : MonoBehaviour
 
     private IEnumerator PlayDelayedOneShot(AudioClip aud)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         _source.PlayOneShot(aud);
     }
 
