@@ -62,18 +62,18 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator TransitionRoutine()
     {
-        _audioSources.ForEach(a => a.Stop());
-        _audioSources.FirstOrDefault(a => a.clip == NightToDayClip)?.Play();
+        //_audioSources.ForEach(a => a.Stop());
+        //_audioSources.FirstOrDefault(a => a.clip == NightToDayClip)?.Play();
 
-        yield return new WaitForSeconds(NightToDayClip.length / 2);
+        //yield return new WaitForSeconds(NightToDayClip.length / 2);
 
         _audioSources.ForEach(a => a.Stop());
         _audioSources.FirstOrDefault(a => a.clip == DayClip)?.Play();
 
         yield return new WaitForSeconds(TimerManager.Instance.DayEventLimitTimer / 2);
 
-        _audioSources.ForEach(a => a.Stop());
-        _audioSources.FirstOrDefault(a => a.clip == DayToNightClip)?.Play();
+        //_audioSources.ForEach(a => a.Stop());
+        //_audioSources.FirstOrDefault(a => a.clip == DayToNightClip)?.Play();
 
         yield return new WaitForSeconds(DayToNightClip.length / 2);
     }
