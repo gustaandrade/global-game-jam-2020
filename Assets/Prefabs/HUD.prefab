@@ -1814,7 +1814,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BGM ON
+  m_text: TOGGLE BGM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3604765c6053f764687d0918168e2f1c, type: 2}
   m_sharedMaterial: {fileID: 2788392863487867850, guid: 3604765c6053f764687d0918168e2f1c,
@@ -2737,7 +2737,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SFX ON
+  m_text: TOGGLE SFX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3604765c6053f764687d0918168e2f1c, type: 2}
   m_sharedMaterial: {fileID: 2788392863487867850, guid: 3604765c6053f764687d0918168e2f1c,
