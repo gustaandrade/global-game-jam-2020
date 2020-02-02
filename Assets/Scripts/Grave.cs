@@ -29,29 +29,29 @@ public class Grave : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     // Update is called once per frame
     void Update()
     {
         if (startClock)
         {
-            graveTimer.GetComponentInChildren<Image>().fillAmount +=  1.0f / waitTime * Time.deltaTime;
+            graveTimer.GetComponentInChildren<Image>().fillAmount += 1.0f / waitTime * Time.deltaTime;
         }
     }
 
     private void OnMouseDown()
     {
-        if(!ToolsManager.instance.usingTool)
+        //if (!ToolsManager.instance.usingTool)
             FixGrave();
     }
 
     private void FixGrave()
     {
         print("try to fix " + graveState + " status: " + graveStatus);
-        if(graveState == GraveState.Idle && graveStatus >= 1 && graveStatus < 4)
+        if (graveState == GraveState.Idle && graveStatus >= 1 && graveStatus < 4)
         {
-           
+
             StartCoroutine(RepairGrave());
         }
         else
@@ -74,7 +74,7 @@ public class Grave : MonoBehaviour
 
     private void UpdateGraveSprite()
     {
-        this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus-1];
+        this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus - 1];
     }
 
     private void ResetGraveSprite()
@@ -96,7 +96,7 @@ public class Grave : MonoBehaviour
                 graveStatus = 4;
             UpdateGraveSprite();
             print("tomou " + damage + "e esta no estado " + graveStatus);
-        }     
+        }
     }
 
     public Event GetCurrentGraveEvent()
@@ -133,7 +133,7 @@ public class Grave : MonoBehaviour
                 print("wrong tool");
             }
         }
-             
+
     }
 
 

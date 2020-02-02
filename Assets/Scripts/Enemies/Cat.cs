@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cat : MonoBehaviour
 {
     public float speed = 1;
+    private float stayTime = 1;
     GameObject target;
     bool moving = false;
     bool returning = false;
@@ -41,8 +42,7 @@ public class Cat : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetSpawnPoint.transform.position, step);
 
             if (Vector2.Distance(transform.position, targetSpawnPoint.transform.position) < 0.1f)
-            {
-                
+            {                
                 returning = false;
                 target.GetComponent<Grave>().StopGraveEvent();
 
@@ -61,31 +61,33 @@ public class Cat : MonoBehaviour
 
     public IEnumerator CatEvent( )
     {
+        float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(blinkTime);
+        this.GetComponentInChildren<SpriteRenderer>().enabled = true; 
 
         target.GetComponentInChildren<Grave>().TakeDamage(catEvent.damage);
-        yield return new WaitForSeconds(1f);
+        
         GoBack(); 
     }
 
     public void SetEvent(Event e)
     {
         catEvent = e;
+        speed = e.eventSpeed;
+        stayTime = e.stayTime;
     }
 
     public void GoBack()

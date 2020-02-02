@@ -24,6 +24,12 @@ public class Event
 
     private Grave eventGrave;
 
+    [Range(0.5f, 5)]
+    public float eventSpeed;
+
+    [Range(0, 5)]
+    public float stayTime = 1;
+
     public void SetEventGrave(Grave g)
     {
         eventGrave = g;
@@ -73,8 +79,20 @@ public class EventManager : MonoBehaviour
 
     public Event GetRandomEvent()
     {
-       // return eventsList[1];
-        return eventsList[Random.Range(0, eventsList.Count)];
+        int wave = TimerManager.Instance.GetWaveCount();
+        // return eventsList[1];
+        if (wave <= 3)
+        {
+            return eventsList[Random.Range(0, 2)];
+        }
+        if (wave > 3 && wave <= 5)
+        {
+            return eventsList[Random.Range(0, 4)];
+        }
+        else
+        {
+            return eventsList[Random.Range(0, eventsList.Count)];
+        }
     }
 
     public Event GetEventOfType(EventType eType)

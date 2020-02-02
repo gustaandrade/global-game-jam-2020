@@ -5,6 +5,7 @@ using UnityEngine;
 public class Dog : MonoBehaviour
 {
     public float speed = 2;
+    public float stayTime = 1;
     GameObject target;
     bool moving = false;
     bool returning = false;
@@ -57,31 +58,33 @@ public class Dog : MonoBehaviour
 
     public IEnumerator CrowEvent()
     {
+        float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(1f);
 
         target.GetComponentInChildren<Grave>().TakeDamage(dogEvent.damage);
-        yield return new WaitForSeconds(1f);
+
         GoBack();
     }
 
     public void SetEvent(Event e)
     {
         dogEvent = e;
+        speed = e.eventSpeed;
+        stayTime = e.stayTime;
     }
 
     public void GoBack()

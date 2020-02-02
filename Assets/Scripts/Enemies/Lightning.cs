@@ -5,6 +5,7 @@ using UnityEngine;
 public class Lightning : MonoBehaviour
 {
     public float speed = 2;
+    private float stayTime = 1;
     GameObject target;
     bool moving = false;
     bool returning = false;
@@ -36,31 +37,34 @@ public class Lightning : MonoBehaviour
     {
         this.transform.position = target.transform.position;
 
+        float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(1f);
 
         target.GetComponentInChildren<Grave>().TakeDamage(lightningEvent.damage);
-        
+
         GoBack();
     }
 
     public void SetEvent(Event e)
     {
         lightningEvent = e;
+        speed = lightningEvent.eventSpeed;        
+        stayTime = e.stayTime;
+
     }
 
     public void GoBack()

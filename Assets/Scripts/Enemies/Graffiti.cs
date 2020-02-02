@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skeleton : MonoBehaviour
+public class Graffiti : MonoBehaviour
 {
     public float speed = 2;
+    public float stayTime = 1;
     GameObject target;
     bool moving = false;
     bool returning = false;
-    private Event skeletonEvent;
+    private Event graffitiEvent;
     private GameObject targetSpawnPoint;
 
 
@@ -30,7 +31,7 @@ public class Skeleton : MonoBehaviour
             if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
             {
                 moving = false;
-                StartCoroutine(CrowEvent());
+                StartCoroutine(GraffitiEvent());
             }
         }
 
@@ -55,33 +56,35 @@ public class Skeleton : MonoBehaviour
         moving = true;
     }
 
-    public IEnumerator CrowEvent()
+    public IEnumerator GraffitiEvent()
     {
+        float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(1f);
 
-        target.GetComponentInChildren<Grave>().TakeDamage(skeletonEvent.damage);
-        yield return new WaitForSeconds(1f);
+        target.GetComponentInChildren<Grave>().TakeDamage(graffitiEvent.damage);
+
         GoBack();
     }
 
     public void SetEvent(Event e)
     {
-        skeletonEvent = e;
+        graffitiEvent = e;
+        speed = e.eventSpeed;
+        stayTime = e.stayTime;
     }
 
     public void GoBack()

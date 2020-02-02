@@ -103,4 +103,9 @@ public class TimerManager : MonoBehaviour
         Transition.SetActive(false);
         _rolling = true;
     }
+
+    public int GetWaveCount()
+    {
+        return _waveCount;
+    }
 }
