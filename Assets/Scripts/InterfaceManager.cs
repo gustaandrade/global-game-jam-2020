@@ -12,8 +12,9 @@ public class InterfaceManager : MonoBehaviour
         _source = GetComponent<AudioSource>();
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        _source.PlayOneShot(Click);
+        if (Input.GetMouseButtonDown(0))
+            _source.PlayOneShot(Click);
     }
 }
