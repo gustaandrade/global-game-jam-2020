@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crow : MonoBehaviour
+public class Lightning : MonoBehaviour
 {
     public float speed = 2;
     GameObject target;
     bool moving = false;
     bool returning = false;
-    private Event crowEvent;
+    private Event lightningEvent;
     private GameObject targetSpawnPoint;
 
 
@@ -21,30 +21,7 @@ public class Crow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moving)
-        {
-            float step = speed * Time.deltaTime;
-            // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
-
-            if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
-            {
-                moving = false;
-                StartCoroutine(CrowEvent());
-            }
-        }
-
-        if (returning)
-        {
-            float step = speed * Time.deltaTime;
-            // move sprite towards the target location
-            transform.position = Vector2.MoveTowards(transform.position, targetSpawnPoint.transform.position, step);
-
-            if (Vector2.Distance(transform.position, targetSpawnPoint.transform.position) < 0.1f)
-            { 
-                Destroy(this.gameObject);
-            }
-        }
+        
 
     }
 
@@ -52,11 +29,13 @@ public class Crow : MonoBehaviour
     {
         this.target = target;
         targetSpawnPoint = target.GetComponent<Grave>().eventSpawnPoint;
-        moving = true;
+        StartCoroutine(LightningEvent());
     }
 
-    public IEnumerator CrowEvent()
+    public IEnumerator LightningEvent()
     {
+        this.transform.position = target.transform.position;
+
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(0.2f);
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
@@ -74,20 +53,19 @@ public class Crow : MonoBehaviour
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1f);
 
-        target.GetComponentInChildren<Grave>().TakeDamage(crowEvent.damage);
-        yield return new WaitForSeconds(1f);
+        target.GetComponentInChildren<Grave>().TakeDamage(lightningEvent.damage);
+        
         GoBack();
     }
 
     public void SetEvent(Event e)
     {
-        crowEvent = e;
+        lightningEvent = e;
     }
 
     public void GoBack()
-    {
-        moving = false;
-        returning = true;
+    { 
         target.GetComponent<Grave>().StopGraveEvent();
+        Destroy(this.gameObject);
     }
 }

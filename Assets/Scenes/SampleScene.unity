@@ -153,21 +153,21 @@ MonoBehaviour:
   eventsList:
   - eventType: 0
     damage: 1
-    toolToFix: 0
+    toolToFix: 2
   - eventType: 1
-    damage: 2
+    damage: 1
     toolToFix: 0
   - eventType: 2
-    damage: 1
-    toolToFix: 0
+    damage: 2
+    toolToFix: 1
   - eventType: 3
-    damage: 1
-    toolToFix: 0
+    damage: 2
+    toolToFix: 5
   - eventType: 4
-    damage: 1
-    toolToFix: 0
+    damage: 3
+    toolToFix: 3
   - eventType: 5
-    damage: 1
+    damage: 3
     toolToFix: 4
   gravesList:
   - {fileID: 873379928}

@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Crow : MonoBehaviour
+public class Skeleton : MonoBehaviour
 {
     public float speed = 2;
     GameObject target;
     bool moving = false;
     bool returning = false;
-    private Event crowEvent;
+    private Event skeletonEvent;
     private GameObject targetSpawnPoint;
 
 
@@ -41,7 +41,7 @@ public class Crow : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, targetSpawnPoint.transform.position, step);
 
             if (Vector2.Distance(transform.position, targetSpawnPoint.transform.position) < 0.1f)
-            { 
+            {
                 Destroy(this.gameObject);
             }
         }
@@ -74,14 +74,14 @@ public class Crow : MonoBehaviour
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
         yield return new WaitForSeconds(1f);
 
-        target.GetComponentInChildren<Grave>().TakeDamage(crowEvent.damage);
+        target.GetComponentInChildren<Grave>().TakeDamage(skeletonEvent.damage);
         yield return new WaitForSeconds(1f);
         GoBack();
     }
 
     public void SetEvent(Event e)
     {
-        crowEvent = e;
+        skeletonEvent = e;
     }
 
     public void GoBack()

@@ -94,4 +94,9 @@ public class Grave : MonoBehaviour
              
     }
 
+
+    public int GetGraveStatus()
+    {
+        return graveStatus;
+    }
 }

@@ -69,8 +69,8 @@ public class EventManager : MonoBehaviour
 
     public Event GetRandomEvent()
     {
-        return eventsList[1];
-     //   return eventsList[Random.Range(0, eventsList.Count)];
+       // return eventsList[1];
+        return eventsList[Random.Range(0, eventsList.Count)];
     }
 
     public Event GetEventOfType(EventType eType)
@@ -95,7 +95,7 @@ public class EventManager : MonoBehaviour
         else
         {
             Grave pickedGrave = gravesList[Random.Range(0, gravesList.Count)];
-            if (pickedGrave.GetGraveState() == GraveState.Idle)
+            if (pickedGrave.GetGraveState() == GraveState.Idle && pickedGrave.GetGraveStatus() < 4)
             {
                 loopCounter = 0;
                 Event rndEvent = GetRandomEvent();
@@ -126,16 +126,20 @@ public class EventManager : MonoBehaviour
                 CrowEvent(e, g, crowObj); 
                 break;
             case EventType.Lightning:
-                LightningEvent();
+                GameObject lightningObj = Instantiate(lightning, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                LightningEvent(e, g, lightningObj);
                 break;
             case EventType.Graffiti:
-                GraffitiEvent();
+                GameObject graffitiObj = Instantiate(graffiti, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                GraffitiEvent(e, g, graffitiObj);
                 break;
             case EventType.Skeleton:
-                SkeletonEvent();
+                GameObject skeletonObj = Instantiate(skeleton, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                SkeletonEvent(e, g, skeletonObj);
                 break;
             case EventType.Dog:
-                DogEvent();
+                GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                DogEvent(e, g, dogObj);
                 break;
 
         }
@@ -151,32 +155,28 @@ public class EventManager : MonoBehaviour
     private void CrowEvent(Event e, Grave g, GameObject crowObj)
     {
         crowObj.GetComponent<Crow>().SetEvent(e);
-        crowObj.GetComponent<Crow>().MoveTowards(g.gameObject);
-        
+        crowObj.GetComponent<Crow>().MoveTowards(g.gameObject);        
     }
 
-    public IEnumerator LightningEvent()
+    private void LightningEvent(Event e, Grave g, GameObject l)
     {
-        yield return new WaitForSeconds(0.2f);
-        print("LightEvent");
+        l.GetComponent<Lightning>().SetEvent(e);
+        l.GetComponent<Lightning>().MoveTowards(g.gameObject);
     }
-
-    public IEnumerator GraffitiEvent()
+    private void GraffitiEvent(Event e, Grave g, GameObject gra)
     {
-        yield return new WaitForSeconds(0.2f);
-        print("PidgeonEvent");
+        gra.GetComponent<Graffiti>().SetEvent(e);
+        gra.GetComponent<Graffiti>().MoveTowards(g.gameObject);
     }
-
-    public IEnumerator SkeletonEvent()
+    private void SkeletonEvent(Event e, Grave g, GameObject skel)
     {
-        yield return new WaitForSeconds(0.2f);
-        print("SkaterEvent");
+        skel.GetComponent<Skeleton>().SetEvent(e);
+        skel.GetComponent<Skeleton>().MoveTowards(g.gameObject);
     }
-
-    public IEnumerator DogEvent()
+    private void DogEvent(Event e, Grave g, GameObject dog)
     {
-        yield return new WaitForSeconds(0.2f);
-        print("VandalEvent");
+        dog.GetComponent<Dog>().SetEvent(e);
+        dog.GetComponent<Dog>().MoveTowards(g.gameObject);
     }
 
 }
