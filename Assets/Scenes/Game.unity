@@ -154,38 +154,38 @@ MonoBehaviour:
   eventsList:
   - eventType: 0
     damage: 1
-    toolToFix: 2
-    eventSpeed: 0
+    toolToFix: 0
+    eventSpeed: 2.3
     stayTime: 1
     eventAudio: {fileID: 0}
   - eventType: 1
     damage: 1
-    toolToFix: 0
-    eventSpeed: 0
+    toolToFix: 2
+    eventSpeed: 2.22
     stayTime: 1
     eventAudio: {fileID: 0}
   - eventType: 2
     damage: 2
     toolToFix: 1
-    eventSpeed: 0
+    eventSpeed: 2.09
     stayTime: 1
     eventAudio: {fileID: 0}
   - eventType: 3
     damage: 2
     toolToFix: 5
-    eventSpeed: 0
+    eventSpeed: 2.35
     stayTime: 1
     eventAudio: {fileID: 0}
   - eventType: 4
     damage: 3
     toolToFix: 3
-    eventSpeed: 0
+    eventSpeed: 2.11
     stayTime: 1
     eventAudio: {fileID: 0}
   - eventType: 5
     damage: 3
     toolToFix: 4
-    eventSpeed: 0
+    eventSpeed: 2.48
     stayTime: 1
     eventAudio: {fileID: 0}
   gravesList:
@@ -3163,17 +3163,17 @@ PrefabInstance:
     - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 433
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
