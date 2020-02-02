@@ -10,11 +10,16 @@ public class TimerManager : MonoBehaviour
     public static TimerManager Instance;
 
     [Space(10), Header("Objects")]
-    public RadialSlider GlobalTimerSlider;
-    public Image GlobalTimerImage;
+    public RadialSlider NightGlobalTimerSlider;
+    public Image NightGlobalTimerImage;
+    public RadialSlider DayGlobalTimerSlider;
+    public Image DayGlobalTimerImage;
+
     public GameObject Transition;
     public TextMeshProUGUI WaveText;
     public TextMeshProUGUI TimeOfDayText;
+    public GameObject NightToDaySlider;
+    public GameObject DayToNightSlider;
 
     [Space(10), Header("Values")]
     [SerializeField, ReadOnly] private float _globalTimer;
@@ -22,6 +27,9 @@ public class TimerManager : MonoBehaviour
     
     [SerializeField, ReadOnly] private float _callEventTimer;
     public float CallEventLimitTimer;
+
+    [SerializeField, ReadOnly] private float _dayEventTimer;
+    public float DayEventLimitTimer;
 
     private bool _rolling = true;
     private int _waveCount = 1;
@@ -38,15 +46,24 @@ public class TimerManager : MonoBehaviour
         TimeOfDayText.text = _isNightTime ? "Night" : "Day";
         WaveText.text = $"Wave {_waveCount}";
 
-        if (!_rolling) return;
+        if (!_rolling) {
+            _dayEventTimer += Time.fixedDeltaTime;
+
+            DayGlobalTimerSlider.Value = _dayEventTimer / DayEventLimitTimer;
+
+            // don't ask why this stupid line is here, just don't...
+            DayGlobalTimerImage.fillMethod = Image.FillMethod.Horizontal;
+
+            return;
+        }
 
         _globalTimer += Time.fixedDeltaTime;
         _callEventTimer += Time.fixedDeltaTime;
 
-        GlobalTimerSlider.Value = _globalTimer / GlobalTimerLimit;
+        NightGlobalTimerSlider.Value = _globalTimer / GlobalTimerLimit;
 
         // don't ask why this stupid line is here, just don't...
-        GlobalTimerImage.fillMethod = Image.FillMethod.Horizontal;
+        NightGlobalTimerImage.fillMethod = Image.FillMethod.Horizontal;
 
         if (_callEventTimer >= CallEventLimitTimer)
         {
@@ -61,7 +78,11 @@ public class TimerManager : MonoBehaviour
             Transition.SetActive(true);
 
             _isNightTime = !_isNightTime;
-            
+            DayToNightSlider.SetActive(!_isNightTime);
+            NightToDaySlider.SetActive(_isNightTime);
+            DayGlobalTimerSlider.Value = 0f;
+            NightGlobalTimerSlider.Value = 0f;
+
             StartCoroutine(FreeRolling());
         }
     }
@@ -71,6 +92,11 @@ public class TimerManager : MonoBehaviour
         yield return new WaitForSeconds(10f);
 
         _isNightTime = !_isNightTime;
+        DayToNightSlider.SetActive(!_isNightTime);
+        NightToDaySlider.SetActive(_isNightTime);
+        DayGlobalTimerSlider.Value = 0f;
+        NightGlobalTimerSlider.Value = 0f;
+
         _waveCount++;
 
         Transition.SetActive(false);
