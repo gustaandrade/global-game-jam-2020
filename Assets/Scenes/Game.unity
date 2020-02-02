@@ -185,6 +185,7 @@ MonoBehaviour:
   lightning: {fileID: 417192376551382361, guid: 168a4da4a44417648998305826715bd6,
     type: 3}
   dog: {fileID: 4686993506637721140, guid: 285eafb281738c041a2b3f9da41e88a4, type: 3}
+  canDamage: 1
 --- !u!4 &87374149
 Transform:
   m_ObjectHideFlags: 0
@@ -624,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseFrame: {fileID: 4430469697507757730}
+  GameOverFrame: {fileID: 0}
   Fade: {fileID: 2049851975}
 --- !u!4 &568309670
 Transform:
@@ -1313,6 +1315,7 @@ MonoBehaviour:
   selectedTool: {fileID: 980286820}
   cursorTool: {fileID: 2112140149}
   moveSpeed: 0.4
+  usingTool: 0
 --- !u!1 &1147867560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2156,6 +2159,31 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1909344552398561100, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2665,6 +2693,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790261695911207963, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790261695911207963, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790261695911207963, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790261695911207963, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8790261695911207963, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9013585067194282676, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}

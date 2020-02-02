@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseManager : MonoBehaviour
 {
     public GameObject PauseFrame;
+    public GameObject GameOverFrame;
     public Animator Fade;
 
     public void PauseGame()
@@ -17,6 +18,12 @@ public class PauseManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         PauseFrame.SetActive(false);
+    }
+
+    public void GameOverGame()
+    {
+        GameOverFrame.SetActive(true);
+        Time.timeScale = 0f;
     }
 
     public void MainMenu()
