@@ -30,6 +30,8 @@ public class Event
     [Range(0, 5)]
     public float stayTime = 1;
 
+    public AudioClip eventAudio;
+
     public void SetEventGrave(Grave g)
     {
         eventGrave = g;
