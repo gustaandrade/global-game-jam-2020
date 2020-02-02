@@ -50,7 +50,9 @@ public class EventManager : MonoBehaviour
     public GameObject graffiti;
     public GameObject lightning;
     public GameObject dog;
-     
+
+
+    public bool canDamage = true;
 
     // Start is called before the first frame update
     void Start()
@@ -84,7 +86,7 @@ public class EventManager : MonoBehaviour
         }
         return null;
     }
-
+     
     int loopCounter = 0;
     public void StartEventInRndGrave()
     {
@@ -99,7 +101,7 @@ public class EventManager : MonoBehaviour
             {
                 loopCounter = 0;
                 Event rndEvent = GetRandomEvent();
-                pickedGrave.SetGraveEvent(rndEvent);
+                pickedGrave.SetGraveEvent(rndEvent);             
                 StartEvent(rndEvent, pickedGrave);
                  
             }
@@ -179,4 +181,12 @@ public class EventManager : MonoBehaviour
         dog.GetComponent<Dog>().MoveTowards(g.gameObject);
     }
 
+    public void ResetAllGraves()
+    {
+        canDamage = true;
+        foreach(Grave g in gravesList)
+        {
+            g.ResetGrave();
+        }
+    }
 }

@@ -12,7 +12,7 @@ public enum GraveState
 
 public class Grave : MonoBehaviour
 {
-    private int graveStatus = 1;
+    private int graveStatus = 0;
     private GraveState graveState;
     public Sprite[] graveSprites;
     private Event currentGraveEvent;
@@ -24,24 +24,26 @@ public class Grave : MonoBehaviour
     private float timeToFix;
     private bool startClock;
 
+    float waitTime = 1;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
         if (startClock)
         {
-          //  graveTimer.GetComponentInChildren<Image>().fillAmount += Time.deltaTime;
+            graveTimer.GetComponentInChildren<Image>().fillAmount +=  1.0f / waitTime * Time.deltaTime;
         }
     }
 
     private void OnMouseDown()
     {
-        FixGrave();
+        if(!ToolsManager.instance.usingTool)
+            FixGrave();
     }
 
     private void FixGrave()
@@ -51,6 +53,10 @@ public class Grave : MonoBehaviour
         {
            
             StartCoroutine(RepairGrave());
+        }
+        else
+        {
+
         }
     }
 
@@ -71,6 +77,11 @@ public class Grave : MonoBehaviour
         this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus-1];
     }
 
+    private void ResetGraveSprite()
+    {
+        this.GetComponent<SpriteRenderer>().sprite = graveSprites[0];
+    }
+
     public GraveState GetGraveState()
     {
         return graveState;
@@ -78,9 +89,14 @@ public class Grave : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        graveStatus += damage;
-        UpdateGraveSprite();
-        print("tomou " + damage + "e esta no estado " + graveStatus);
+        if (EventManager.Instance().canDamage)
+        {
+            graveStatus += damage;
+            if (graveStatus > 4)
+                graveStatus = 4;
+            UpdateGraveSprite();
+            print("tomou " + damage + "e esta no estado " + graveStatus);
+        }     
     }
 
     public Event GetCurrentGraveEvent()
@@ -96,7 +112,9 @@ public class Grave : MonoBehaviour
             //wait for repaier
             graveTimer.SetActive(true);
             startClock = true;
-            yield return new WaitForSeconds(2 * graveStatus);
+            waitTime = 2 * graveStatus;
+            ToolsManager.instance.usingTool = true;
+            yield return new WaitForSeconds(waitTime);
 
             //repair
             graveStatus--;
@@ -104,6 +122,7 @@ public class Grave : MonoBehaviour
             graveTimer.SetActive(false);
             startClock = false;
             graveState = GraveState.Idle;
+            ToolsManager.instance.usingTool = false;
 
             print("grave reparada para o status" + graveStatus);
         }
@@ -118,5 +137,12 @@ public class Grave : MonoBehaviour
     public int GetGraveStatus()
     {
         return graveStatus;
+    }
+
+    public void ResetGrave()
+    {
+        graveStatus = 0;
+        graveState = GraveState.Idle;
+        ResetGraveSprite();
     }
 }

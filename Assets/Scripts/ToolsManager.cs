@@ -9,6 +9,7 @@ public class ToolsManager : MonoBehaviour
     private Vector3 mousePosition;
     public float moveSpeed = 0.1f;
     public static ToolsManager instance;
+    public bool usingTool = false;
 
     // Start is called before the first frame update
     void Start()

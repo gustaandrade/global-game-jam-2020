@@ -82,7 +82,7 @@ public class TimerManager : MonoBehaviour
             NightToDaySlider.SetActive(_isNightTime);
             DayGlobalTimerSlider.Value = 0f;
             NightGlobalTimerSlider.Value = 0f;
-
+            EventManager.Instance().canDamage = false;
             StartCoroutine(FreeRolling());
         }
     }
@@ -96,7 +96,7 @@ public class TimerManager : MonoBehaviour
         NightToDaySlider.SetActive(_isNightTime);
         DayGlobalTimerSlider.Value = 0f;
         NightGlobalTimerSlider.Value = 0f;
-
+        EventManager.Instance().ResetAllGraves();
         _waveCount++;
 
         Transition.SetActive(false);
