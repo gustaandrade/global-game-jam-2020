@@ -11,12 +11,13 @@ public class Dog : MonoBehaviour
     bool returning = false;
     private Event dogEvent;
     private GameObject targetSpawnPoint;
+    private Animator enemyAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyAnim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -31,7 +32,7 @@ public class Dog : MonoBehaviour
             if (Vector2.Distance(transform.position, target.transform.position) < 0.1f)
             {
                 moving = false;
-                StartCoroutine(CrowEvent());
+                StartCoroutine(DogEvent());
             }
         }
 
@@ -56,8 +57,9 @@ public class Dog : MonoBehaviour
         moving = true;
     }
 
-    public IEnumerator CrowEvent()
+    public IEnumerator DogEvent()
     {
+        enemyAnim.SetBool("event", true);
         float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(blinkTime);
@@ -77,6 +79,7 @@ public class Dog : MonoBehaviour
 
         target.GetComponentInChildren<Grave>().TakeDamage(dogEvent.damage);
 
+        enemyAnim.SetBool("event", false);
         GoBack();
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2338190971619899088}
   - component: {fileID: 8877497869552230319}
+  - component: {fileID: 8771937993878051833}
   m_Layer: 0
   m_Name: DogSprite
   m_TagString: Untagged
@@ -70,8 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5070412764433465026, guid: 148007802d02d804ca933e40f2bf771a,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 780c2a214e7098640b8e1bb61fef2187, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,6 +82,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8771937993878051833
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4437693843554600705}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 48a9060768916a0438b0fe11be3bd1a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4686993506637721140
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,3 +145,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd369849d8afecd46bc24af9b5468760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 2
+  stayTime: 1

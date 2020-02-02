@@ -167,6 +167,10 @@ public class EventManager : MonoBehaviour
                 break;
             case EventType.Dog:
                 GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
+                if(dogObj.transform.position.y < 1)
+                {
+                    dogObj.transform.localScale = new Vector3(1, -1, 1);
+                }
                 enemies.Add(dogObj);
                 DogEvent(e, g, dogObj);
                 break;
