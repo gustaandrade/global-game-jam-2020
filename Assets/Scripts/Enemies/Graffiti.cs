@@ -11,13 +11,15 @@ public class Graffiti : MonoBehaviour
     bool returning = false;
     private Event graffitiEvent;
     private GameObject targetSpawnPoint;
+    private Animator enemyAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyAnim = GetComponentInChildren<Animator>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -58,6 +60,7 @@ public class Graffiti : MonoBehaviour
 
     public IEnumerator GraffitiEvent()
     {
+        enemyAnim.SetBool("event", true);
         float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(blinkTime);
@@ -76,7 +79,7 @@ public class Graffiti : MonoBehaviour
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         target.GetComponentInChildren<Grave>().TakeDamage(graffitiEvent.damage);
-
+        enemyAnim.SetBool("event", false);
         GoBack();
     }
 

@@ -11,14 +11,14 @@ public class Cat : MonoBehaviour
     bool returning = false;
     private Event catEvent;
     private GameObject targetSpawnPoint;
+    private Animator enemyAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        enemyAnim = GetComponentInChildren<Animator>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -61,6 +61,7 @@ public class Cat : MonoBehaviour
 
     public IEnumerator CatEvent( )
     {
+        enemyAnim.SetBool("event", true);
         float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(blinkTime);
@@ -76,10 +77,12 @@ public class Cat : MonoBehaviour
         yield return new WaitForSeconds(blinkTime);
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true; 
+        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         target.GetComponentInChildren<Grave>().TakeDamage(catEvent.damage);
-        
+
+        enemyAnim.SetBool("event", false);
+
         GoBack(); 
     }
 

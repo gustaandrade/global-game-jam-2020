@@ -85,11 +85,13 @@ public class EventManager : MonoBehaviour
         // return eventsList[1];
         if (wave <= 3)
         {
-            return eventsList[Random.Range(0, 2)];
+            return eventsList[Random.Range(0, eventsList.Count)];
+            //return eventsList[Random.Range(0, 2)];
         }
         if (wave > 3 && wave <= 5)
         {
-            return eventsList[Random.Range(0, 4)];
+            return eventsList[Random.Range(0, eventsList.Count)];
+            //return eventsList[Random.Range(0, 4)];
         }
         else
         {
@@ -143,37 +145,47 @@ public class EventManager : MonoBehaviour
             case EventType.Cat:
                 GameObject catObj = Instantiate(cat, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(catObj);
+                FlipEnemy(catObj);
                 CatEvent(e, g, catObj);
                 break;
             case EventType.Crow:
                GameObject crowObj = Instantiate(crow, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(crowObj);
+                FlipEnemy(crowObj);
                 CrowEvent(e, g, crowObj); 
                 break;
             case EventType.Lightning:
                 GameObject lightningObj = Instantiate(lightning, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(lightningObj);
+
                 LightningEvent(e, g, lightningObj);
                 break;
             case EventType.Graffiti:
                 GameObject graffitiObj = Instantiate(graffiti, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(graffitiObj);
+                FlipEnemy(graffitiObj);
                 GraffitiEvent(e, g, graffitiObj);
                 break;
             case EventType.Skeleton:
                 GameObject skeletonObj = Instantiate(skeleton, g.eventSpawnPoint.transform.position, Quaternion.identity);
                 enemies.Add(skeletonObj);
+                FlipEnemy(skeletonObj);
                 SkeletonEvent(e, g, skeletonObj);
                 break;
             case EventType.Dog:
                 GameObject dogObj = Instantiate(dog, g.eventSpawnPoint.transform.position, Quaternion.identity);
-                if(dogObj.transform.position.y < 1)
-                {
-                    dogObj.transform.localScale = new Vector3(1, -1, 1);
-                }
+                FlipEnemy(dogObj);
                 enemies.Add(dogObj);
                 DogEvent(e, g, dogObj);
                 break;
+        }
+    }
+
+    private void FlipEnemy(GameObject e)
+    {
+        if (e.transform.position.y < 1)
+        {
+            e.transform.localScale = new Vector3(1, -1, 1);
         }
     }
 

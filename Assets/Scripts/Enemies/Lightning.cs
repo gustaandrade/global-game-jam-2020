@@ -11,13 +11,15 @@ public class Lightning : MonoBehaviour
     bool returning = false;
     private Event lightningEvent;
     private GameObject targetSpawnPoint;
+    private Animator enemyAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyAnim = GetComponentInChildren<Animator>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -36,26 +38,26 @@ public class Lightning : MonoBehaviour
     public IEnumerator LightningEvent()
     {
         this.transform.position = target.transform.position;
-
-        float blinkTime = stayTime / 7f;
-        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(blinkTime);
-        this.GetComponentInChildren<SpriteRenderer>().enabled = true;
-
+      //  enemyAnim.SetBool("event", true);
+     //   float blinkTime = stayTime / 7f;
+        /*  this.GetComponentInChildren<SpriteRenderer>().enabled = false;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = true;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = false;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = true;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = false;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = true;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = false;
+          yield return new WaitForSeconds(blinkTime);
+          this.GetComponentInChildren<SpriteRenderer>().enabled = true;*/
+        yield return new WaitForSeconds(stayTime);
         target.GetComponentInChildren<Grave>().TakeDamage(lightningEvent.damage);
-
+        //enemyAnim.SetBool("event", false);
         GoBack();
     }
 

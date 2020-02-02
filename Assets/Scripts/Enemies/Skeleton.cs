@@ -11,12 +11,13 @@ public class Skeleton : MonoBehaviour
     bool returning = false;
     private Event skeletonEvent;
     private GameObject targetSpawnPoint;
+    private Animator enemyAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-
+        enemyAnim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -58,6 +59,7 @@ public class Skeleton : MonoBehaviour
 
     public IEnumerator SkeletonEvent()
     {
+        enemyAnim.SetBool("event", true);
         float blinkTime = stayTime / 7f;
         this.GetComponentInChildren<SpriteRenderer>().enabled = false;
         yield return new WaitForSeconds(blinkTime);
@@ -76,7 +78,7 @@ public class Skeleton : MonoBehaviour
         this.GetComponentInChildren<SpriteRenderer>().enabled = true;
 
         target.GetComponentInChildren<Grave>().TakeDamage(skeletonEvent.damage);
-
+        enemyAnim.SetBool("event", false);
         GoBack();
     }
 
