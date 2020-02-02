@@ -34,7 +34,7 @@ public class LifeManager : MonoBehaviour
             hearts[i].SetActive(true);
         }
 
-        if(lifes == 0)
+        if(lifes <= 0)
         {
             print("gameover");
             PauseManager.instance.GameOverGame();
