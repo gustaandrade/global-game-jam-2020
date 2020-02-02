@@ -24,7 +24,7 @@ public class Event
 
     private Grave eventGrave;
 
-    [Range(0.5f, 5)]
+    [Range(1, 5)]
     public float eventSpeed;
 
     [Range(0, 5)]
@@ -223,4 +223,18 @@ public class EventManager : MonoBehaviour
             g.ResetGrave();
         }
     }
+
+    public int DestroyedGravesCount()
+    {
+        int count = 0;
+        foreach (Grave g in gravesList)
+        {
+            if (g.GetGraveStatus() == 4){
+                count++;
+            }
+        }
+
+        return count;
+    }
+
 }

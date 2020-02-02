@@ -7,6 +7,13 @@ public class PauseManager : MonoBehaviour
     public GameObject PauseFrame;
     public GameObject GameOverFrame;
     public Animator Fade;
+    public static PauseManager instance;
+
+    private void Start()
+    {
+        if(instance == null)
+            instance = this;
+    }
 
     public void PauseGame()
     {

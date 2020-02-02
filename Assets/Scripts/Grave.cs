@@ -43,6 +43,7 @@ public class Grave : MonoBehaviour
     private void OnMouseDown()
     {
         //if (!ToolsManager.instance.usingTool)
+        if(TimerManager.Instance.IsNightTime())
             FixGrave();
     }
 
@@ -56,7 +57,7 @@ public class Grave : MonoBehaviour
         }
         else
         {
-
+            print("cant repair");
         }
     }
 
@@ -92,8 +93,11 @@ public class Grave : MonoBehaviour
         if (EventManager.Instance().canDamage)
         {
             graveStatus += damage;
-            if (graveStatus > 4)
+            if (graveStatus >= 4)
+            {
                 graveStatus = 4;
+                LifeManager.instance.lifes--;
+            }
             UpdateGraveSprite();
             print("tomou " + damage + "e esta no estado " + graveStatus);
         }

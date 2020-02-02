@@ -113,4 +113,9 @@ public class TimerManager : MonoBehaviour
     {
         return _waveCount;
     }
+
+    public bool IsNightTime()
+    {
+        return _isNightTime;
+    }
 }
