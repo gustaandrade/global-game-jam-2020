@@ -87,6 +87,7 @@ public class TimerManager : MonoBehaviour
 
             EventManager.Instance().canDamage = false;
             EventManager.Instance().DestroyAllEnemies();
+            LifeManager.instance.UpdateHeartContainer();
             StartCoroutine(FreeRolling());
         }
     }
@@ -101,6 +102,7 @@ public class TimerManager : MonoBehaviour
         DayGlobalTimerSlider.Value = 0f;
         NightGlobalTimerSlider.Value = 0f;
         EventManager.Instance().ResetAllGraves();
+       
         _waveCount++;
 
         AudioManager.Instance.StartNight();

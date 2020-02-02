@@ -36,6 +36,7 @@ public class LifeManager : MonoBehaviour
 
         if(lifes == 0)
         {
+            print("gameover");
             PauseManager.instance.GameOverGame();
         }
     }

@@ -742,7 +742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseFrame: {fileID: 4430469697507757730}
-  GameOverFrame: {fileID: 0}
+  GameOverFrame: {fileID: 1441317906}
   Fade: {fileID: 2049851975}
 --- !u!4 &568309670
 Transform:
@@ -2277,6 +2277,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1441317906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4394820293151748495, guid: 817a782e55833d24aa748b271bfed8ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 4430469697507757725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1496187259 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7471765801381143687, guid: 817a782e55833d24aa748b271bfed8ef,

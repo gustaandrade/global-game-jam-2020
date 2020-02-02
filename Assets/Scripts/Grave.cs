@@ -97,6 +97,11 @@ public class Grave : MonoBehaviour
             {
                 graveStatus = 4;
                 LifeManager.instance.lifes--;
+                if (EventManager.Instance().DestroyedGravesCount() == 6)
+                {
+                    print("gameover");
+                    PauseManager.instance.GameOverGame();
+                }
             }
             UpdateGraveSprite();
             print("tomou " + damage + "e esta no estado " + graveStatus);
