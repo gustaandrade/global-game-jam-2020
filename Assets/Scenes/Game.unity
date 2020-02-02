@@ -154,21 +154,39 @@ MonoBehaviour:
   - eventType: 0
     damage: 1
     toolToFix: 2
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   - eventType: 1
     damage: 1
     toolToFix: 0
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   - eventType: 2
     damage: 2
     toolToFix: 1
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   - eventType: 3
     damage: 2
     toolToFix: 5
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   - eventType: 4
     damage: 3
     toolToFix: 3
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   - eventType: 5
     damage: 3
     toolToFix: 4
+    eventSpeed: 0
+    stayTime: 1
+    eventAudio: {fileID: 0}
   gravesList:
   - {fileID: 873379928}
   - {fileID: 995254173}
@@ -176,6 +194,7 @@ MonoBehaviour:
   - {fileID: 539468220}
   - {fileID: 1176080145}
   - {fileID: 1165976830}
+  enemies: []
   cat: {fileID: 3796799715358944771, guid: c5c8c17c539baf44da7612fc61648cb8, type: 3}
   crow: {fileID: 6739644225671972244, guid: 1ecbda088d2cd3d4487fb9e9e4259244, type: 3}
   skeleton: {fileID: 1863292509001043441, guid: 3bc2d4e9a01089b46aa8079530239ad0,
@@ -2589,27 +2608,54 @@ PrefabInstance:
     - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 0
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 0
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_textInfo.pageCount
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_text
+      value: 'GAME OVER
+
+
+        You are a terrible tomb keeper...
+
+
+        You''re
+        fired!!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610611133629157140, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718545458058170788, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718545458058170788, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1909344552398561100, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
@@ -2640,6 +2686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2085528258903445114, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2931629816972679291, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
@@ -2740,6 +2791,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 4394820293151748495, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4430469697466599968, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
@@ -3006,6 +3062,26 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805181180499688763, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6816271358126687253, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3044,6 +3120,21 @@ PrefabInstance:
     - target: {fileID: 7061010872933474876, guid: 817a782e55833d24aa748b271bfed8ef,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276259981191003229, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.32500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276259981191003229, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276259981191003229, guid: 817a782e55833d24aa748b271bfed8ef,
+        type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7471765801381143687, guid: 817a782e55833d24aa748b271bfed8ef,
