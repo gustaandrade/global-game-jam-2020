@@ -256,7 +256,7 @@ public class EventManager : MonoBehaviour
         int count = 0;
         foreach (Grave g in gravesList)
         {
-            if (g.GetGraveStatus() == 4){
+            if (g.GetGraveStatus() == 3){
                 count++;
             }
         }
