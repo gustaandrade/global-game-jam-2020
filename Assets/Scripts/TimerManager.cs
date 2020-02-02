@@ -8,11 +8,12 @@ public class TimerManager : MonoBehaviour
 {
     public static TimerManager Instance;
 
-    public float GlobalTimer;
+    [SerializeField, ReadOnly] private float _globalTimer;
+    public float GlobalTimerLimit;
     public RadialSlider GlobalTimerSlider;
     public Image GlobalTimerImage;
 
-    public float CallEventTimer;
+    [SerializeField, ReadOnly] private float _callEventTimer;
     public float CallEventLimitTimer;
 
     private void Start()
@@ -23,16 +24,23 @@ public class TimerManager : MonoBehaviour
 
     private void FixedUpdate()
     {
-        GlobalTimer += Time.fixedDeltaTime;
-        CallEventTimer += Time.fixedDeltaTime;
-        GlobalTimerSlider.Value = GlobalTimer;
-        GlobalTimerImage.fillMethod = Image.FillMethod.Horizontal;
-        //GlobalTimerImage.fillAmount = GlobalTimer / 10;
+        _globalTimer += Time.fixedDeltaTime;
+        _callEventTimer += Time.fixedDeltaTime;
 
-        if (CallEventTimer >= CallEventLimitTimer)
+        GlobalTimerSlider.Value = _globalTimer / GlobalTimerLimit;
+        // don't ask why this stupid line is here, just don't...
+        GlobalTimerImage.fillMethod = Image.FillMethod.Horizontal;
+
+        if (_callEventTimer >= CallEventLimitTimer)
         {
             EventManager.Instance().StartEventInRndGrave();
-            CallEventTimer = 0f;
+            _callEventTimer = 0f;
+        }
+
+        if (_globalTimer >= GlobalTimerLimit)
+        {
+            _globalTimer = 0f;
+            Debug.Log("cycle time");
         }
     }
 }
