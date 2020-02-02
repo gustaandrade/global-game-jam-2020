@@ -49,7 +49,7 @@ public class Grave : MonoBehaviour
     private void FixGrave()
     {
         print("try to fix " + graveState + " status: " + graveStatus);
-        if(graveState == GraveState.Idle && graveStatus > 1 && graveStatus < 4)
+        if(graveState == GraveState.Idle && graveStatus >= 1 && graveStatus < 4)
         {
            
             StartCoroutine(RepairGrave());
@@ -105,30 +105,33 @@ public class Grave : MonoBehaviour
     }
 
     public IEnumerator RepairGrave()
-    { 
-        if (this.currentGraveEvent.toolToFix == ToolsManager.instance.selectedTool.GetToolType())
+    {
+        if (this.currentGraveEvent != null)
         {
-            graveState = GraveState.Fixing;
-            //wait for repaier
-            graveTimer.SetActive(true);
-            startClock = true;
-            waitTime = 2 * graveStatus;
-            ToolsManager.instance.usingTool = true;
-            yield return new WaitForSeconds(waitTime);
+            if (this.currentGraveEvent.toolToFix == ToolsManager.instance.selectedTool.GetToolType())
+            {
+                graveState = GraveState.Fixing;
+                //wait for repaier
+                graveTimer.SetActive(true);
+                startClock = true;
+                waitTime = 3 * graveStatus;
+                ToolsManager.instance.usingTool = true;
+                yield return new WaitForSeconds(waitTime);
 
-            //repair
-            graveStatus--;
-            ToolsManager.instance.ClearSelectedTool();
-            graveTimer.SetActive(false);
-            startClock = false;
-            graveState = GraveState.Idle;
-            ToolsManager.instance.usingTool = false;
+                //repair
+                graveStatus--;
+                //ToolsManager.instance.ClearSelectedTool();
+                graveTimer.SetActive(false);
+                startClock = false;
+                graveState = GraveState.Idle;
+                ToolsManager.instance.usingTool = false;
 
-            print("grave reparada para o status" + graveStatus);
-        }
-        else
-        {
-            print("wrong tool");
+                print("grave reparada para o status" + graveStatus);
+            }
+            else
+            {
+                print("wrong tool");
+            }
         }
              
     }
