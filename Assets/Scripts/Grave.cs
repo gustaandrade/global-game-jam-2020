@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum GraveState
 {
@@ -16,8 +17,13 @@ public class Grave : MonoBehaviour
     public Sprite[] graveSprites;
     private Event currentGraveEvent;
 
-    public GameObject eventSpawnPoint;    
-   
+    public GameObject eventSpawnPoint;
+
+    public GameObject graveTimer;
+
+    private float timeToFix;
+    private bool startClock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,7 +33,10 @@ public class Grave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (startClock)
+        {
+          //  graveTimer.GetComponentInChildren<Image>().fillAmount += Time.deltaTime;
+        }
     }
 
     private void OnMouseDown()
@@ -40,8 +49,8 @@ public class Grave : MonoBehaviour
         print("try to fix " + graveState + " status: " + graveStatus);
         if(graveState == GraveState.Idle && graveStatus > 1 && graveStatus < 4)
         {
-            graveState = GraveState.Fixing;
-            RepairGrave();
+           
+            StartCoroutine(RepairGrave());
         }
     }
 
@@ -59,7 +68,7 @@ public class Grave : MonoBehaviour
 
     private void UpdateGraveSprite()
     {
-       // this.GetComponent<SpriteRenderer>().sprite = graveSprites[life];
+        this.GetComponent<SpriteRenderer>().sprite = graveSprites[graveStatus-1];
     }
 
     public GraveState GetGraveState()
@@ -70,7 +79,7 @@ public class Grave : MonoBehaviour
     public void TakeDamage(int damage)
     {
         graveStatus += damage;
-
+        UpdateGraveSprite();
         print("tomou " + damage + "e esta no estado " + graveStatus);
     }
 
@@ -79,18 +88,29 @@ public class Grave : MonoBehaviour
         return currentGraveEvent;
     }
 
-    public void RepairGrave()
+    public IEnumerator RepairGrave()
     { 
-            if (this.currentGraveEvent.toolToFix == ToolsManager.instance.selectedTool.GetToolType())
-            {
-                graveStatus--;
-                ToolsManager.instance.ClearSelectedTool();
-                 print("grave reparada para o status" + graveStatus);
-            }
-            else
-            {
-                print("wrong tool");
-            }
+        if (this.currentGraveEvent.toolToFix == ToolsManager.instance.selectedTool.GetToolType())
+        {
+            graveState = GraveState.Fixing;
+            //wait for repaier
+            graveTimer.SetActive(true);
+            startClock = true;
+            yield return new WaitForSeconds(2 * graveStatus);
+
+            //repair
+            graveStatus--;
+            ToolsManager.instance.ClearSelectedTool();
+            graveTimer.SetActive(false);
+            startClock = false;
+            graveState = GraveState.Idle;
+
+            print("grave reparada para o status" + graveStatus);
+        }
+        else
+        {
+            print("wrong tool");
+        }
              
     }
 

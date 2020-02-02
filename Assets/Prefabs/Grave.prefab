@@ -407,6 +407,7 @@ MonoBehaviour:
   - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   eventSpawnPoint: {fileID: 5488496892727693397}
+  graveTimer: {fileID: 2774314322623622802}
 --- !u!61 &8906959694878108589
 BoxCollider2D:
   m_ObjectHideFlags: 0
