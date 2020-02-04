@@ -26,20 +26,20 @@ Top-Down
 
 ## Credits
 ### Art
-Débora Tavares (debdebwen) - 2D artist and animator
-Okami Yukino (yuki) - assistant
+- Débora Tavares (debdebwen) - 2D artist and animator
+- Okami Yukino (yuki) - assistant
 
 ### Game Design
-Daniela Reigas (danikiedis) - gd/production
-Vitor Vieira - script assistant
+- Daniela Reigas (danikiedis) - gd/production
+- Vitor Vieira - script assistant
 
 ### Music
-Willians Rodrigues
+- Willians Rodrigues
 
 ### Programming
-Gustavo Andrade (gustaandrade)
-Paulo Borges 
+- Gustavo Andrade (gustaandrade)
+- Paulo Borges 
 
 ### Sound FX
-all SFX under CC license downloaded from freesound.org
-edited by danikiedis
+- all SFX under CC license downloaded from freesound.org
+- edited by danikiedis
